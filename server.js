@@ -11,12 +11,12 @@ app.get('/', (req, res) => {
   res.json({ message: 'Номын API ажиллаж байна' });   
 });
 
-app.get('/api/books/:id', (req, res) => {                  // GET /api/books/1 гэх мэт: :id нь хувьсах хэсэг
-  const book = books.find(b => b.id === Number(req.params.id));   // URL-ээс id-г авч, жагсаалтаас тохирох номыг хайна
-  if (!book) {                                             // олдоогүй бол
-    return res.status(404).json({ error: 'Ном олдсонгүй' });      // 404 статус, алдааны мессеж буцаана
+app.get('/api/books/:id', (req, res) => {                  
+  const book = books.find(b => b.id === Number(req.params.id));  
+  if (!book) {                                             
+    return res.status(404).json({ error: 'Ном олдсонгүй' });      
   }
-  res.json(book);                                          // олдсон бол тэр номыг буцаана
+  res.json(book);                                        
 });
 
 app.listen(PORT, () => {                
